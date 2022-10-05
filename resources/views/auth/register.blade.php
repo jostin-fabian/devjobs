@@ -6,7 +6,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}"novalidate>
             @csrf
 
             <!-- Name -->
@@ -45,20 +45,26 @@
 
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
-                                name="password_confirmation" required />
+                              name="password_confirmation" required/>
 
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2"/>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+            <div class="flex justify-between my-5">
+                <x-link
+                    :href="route('login')">
+                    I already have an account
+                </x-link>
+                <x-link
+                    :href="route('password.request')">
+                    Forgot your password
 
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
+                </x-link>
             </div>
+
+            <x-primary-button class="w-full justify-center">
+                {{ __('Create an account') }}
+            </x-primary-button>
         </form>
     </x-auth-card>
 </x-guest-layout>

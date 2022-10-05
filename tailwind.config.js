@@ -7,14 +7,16 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
-
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+    /*
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                },
             },
         },
-    },
+
+     */
 
     plugins: [require('@tailwindcss/forms')],
 };
