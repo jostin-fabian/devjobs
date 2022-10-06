@@ -16,6 +16,8 @@ class CreateVacancy extends Component
     public $company;//company name
     public $last_day;//last_day
     public $image;//image of the appointment
+    //use WithFileUploads
+    use WithFileUploads;
 
     protected $rules = [
         'title' => 'required|string',
@@ -26,13 +28,19 @@ class CreateVacancy extends Component
         'description' => 'required',
         'image' => 'required|image|max:1024',
     ];
-    //use WithFileUploads
-    use WithFileUploads;
+
 
     //create a new createVacancy function
     public function createVacancy()
     {
         $data = $this->validate();
+        //store image
+        $image=$this->image->store('public/vacancies');
+        $imageName=str_replace('public/vacancies/','',$image);
+        //create a vacancy
+        //create a message
+        //redirect to the user
+
     }
 
     function render()

@@ -37,8 +37,12 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('vacancies', function (Blueprint $table) {
+            //drop  foreign  from the Vacancies table
+            $table->dropForeign('vacancies_category_id_foreign');
+            $table->dropForeign('vacancies_salary_id_foreign');
+            $table->dropForeign('vacancies_user_id_foreign');
             //drop columns from the vacancies table
-            $table->dropColumn(['title','salary_id','category_id','company','last_day','description','image','published','user_id']);
+            $table->dropColumn(['title', 'salary_id', 'category_id', 'company', 'last_day', 'description', 'image', 'published', 'user_id']);
         });
     }
 };
