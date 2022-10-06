@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Vacancy extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'salary_id',
+        'category_id',
+        'company',
+        'last_day',
+        'description',
+        'image',
+        'user_id'
+
+    ];
 }
