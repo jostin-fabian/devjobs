@@ -6,7 +6,9 @@ use Livewire\Component;
 
 class ShowAlert extends Component
 {
-    public function render()
+    public $message;
+
+    function render()
     {
         return view('livewire.show-alert');
     }

@@ -23,12 +23,12 @@ class CreateVacancy extends Component
         'company' => 'required',
         'last_day' => 'required',
         'description' => 'required',
-        'image' => 'required',
+        'image' => 'required'
     ];
     //create a new createVacancy function
     public function createVacancy()
     {
-        $data=$this->validate(request(), $this->rules);
+        $data=$this->validate();
     }
 
     function render()
