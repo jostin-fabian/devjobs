@@ -14,11 +14,11 @@
 
         <select id="salary" name="salary"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full">
-            <option value="">
-                {{ __('-- Select a salary --') }}
-            </option>
-            <option value="1">Developer - Get a Job</option>
-            <option value="2">Recruiter - Post Jobs'</option>
+            <option>{{ __('-- Select a salary --') }}</option>
+            @foreach($salaries as $salary)
+                <option value="{{$salary->id}}">{{$salary->salary}}</option>
+            @endforeach
+
         </select>
 
         <x-input-error :messages="$errors->get('salary')" class="mt-2"/>
@@ -29,11 +29,10 @@
 
         <select id="category" name="category"
                 class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full">
-            <option value="">
-                {{ __('-- Select a category --') }}
-            </option>
-            <option value="1">Developer - Get a Job</option>
-            <option value="2">Recruiter - Post Jobs'</option>
+            <option value="">{{ __('-- Select a category --') }}</option>
+            @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->category}}</option>
+            @endforeach
         </select>
 
         <x-input-error :messages="$errors->get('category')" class="mt-2"/>
