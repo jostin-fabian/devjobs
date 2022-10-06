@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Salary;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreateVacancy extends Component
 {
@@ -25,10 +26,13 @@ class CreateVacancy extends Component
         'description' => 'required',
         'image' => 'required'
     ];
+    //use WithFileUploads
+    use WithFileUploads;
+
     //create a new createVacancy function
     public function createVacancy()
     {
-        $data=$this->validate();
+        $data = $this->validate();
     }
 
     function render()
