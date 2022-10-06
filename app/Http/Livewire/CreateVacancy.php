@@ -24,7 +24,7 @@ class CreateVacancy extends Component
         'company' => 'required',
         'last_day' => 'required',
         'description' => 'required',
-        'image' => 'required'
+        'image' => 'required|image|max:1024',
     ];
     //use WithFileUploads
     use WithFileUploads;
