@@ -24,7 +24,20 @@
 
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <x-input-error :messages="$errors->get('email')" class="mt-2"/>
+            </div>
+            <!-- Job role -->
+            <div class="mt-4">
+                <x-input-label for="role" :value="__('What type of Account do you want at DevJobs?')"/>
+                <select id="role" name="role"
+                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full">
+                    <option value="" {{ old('role') == ''?'selected' : '' }}>
+                        {{ __('-- Select a role --') }}
+                    </option>
+                    <option value="1">Developer - Get a Job</option>
+                    <option value="2">Recruiter - Post Jobs'</option>
+                </select>
+
             </div>
 
             <!-- Password -->
