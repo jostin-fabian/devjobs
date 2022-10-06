@@ -51,7 +51,7 @@ class CreateVacancy extends Component
         ]);
 
         //create a message
-        session()->flash('message', 'Successfully');
+        session()->flash('message', 'The vacancy was correctly published');
         //redirect to the user
         return redirect()->route('vacancies.index');
 
