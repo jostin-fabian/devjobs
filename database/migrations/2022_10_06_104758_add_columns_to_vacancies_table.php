@@ -37,7 +37,7 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('vacancies', function (Blueprint $table) {
-            //drop columns
+            //drop columns from the vacancies table
             $table->dropColumn(['title','salary_id','category_id','company','last_day','description','image','published','user_id']);
         });
     }
