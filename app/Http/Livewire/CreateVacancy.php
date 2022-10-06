@@ -8,7 +8,30 @@ use Livewire\Component;
 
 class CreateVacancy extends Component
 {
-    public function render()
+    public $title;//title of the vacancy
+    public $description;//description of the job
+    public $category;//category name
+    public $salary;//salary
+    public $company;//company name
+    public $last_day;//last_day
+    public $image;//image of the appointment
+
+    protected $rules = [
+        'title' => 'required|string',
+        'salary' => 'required',
+        'category' => 'required',
+        'company' => 'required',
+        'last_day' => 'required',
+        'description' => 'required',
+        'image' => 'required',
+    ];
+    //create a new createVacancy function
+    public function createVacancy()
+    {
+        $data=$this->validate(request(), $this->rules);
+    }
+
+    function render()
     {
         //Query The Database
         $salaries = Salary::all();
