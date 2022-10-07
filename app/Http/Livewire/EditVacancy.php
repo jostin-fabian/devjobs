@@ -16,7 +16,7 @@ class EditVacancy extends Component
     public $company;//company name
     public $last_day;//last_day
     public $description;//description of the job
-    public $image;//image o
+    public $image;//image
 
     public function mount(Vacancy $vacancy)
     {
@@ -26,7 +26,7 @@ class EditVacancy extends Component
         $this->company = $vacancy->company;
         $this->last_day = Carbon::parse($vacancy->last_day)->format('Y-m-d');
         $this->description = $vacancy->description;
-
+        $this->image = $vacancy->image;
     }
 
     public function render()

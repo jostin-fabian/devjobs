@@ -77,19 +77,17 @@
     <livewire:show-alert :message="$message"/>
     @enderror
     <!-- Image -->
-  {{--  <div>
+    <div>
         <x-input-label for="image" :value="__('Image')"/>
 
         <x-text-input id="image" class="block mt-1 w-full" type="file" wire:model="image" accept="image/*"/>
-        <!-- Two way data binding -->
+        <!-- Edit Image -->
         <div class="my-5 w-80">
-            @if ($image)
-                <p>Image:</p>
-                <img src="{{$image->temporaryUrl()}}" alt="Image preview">
-            @endif
+            <x-input-label :value="__('Current Image')"/>
+            <img src="{{asset('storage/vacancies/'.$image)}}" alt="{{'Vacancy image ' . $title}}">
+        </div>
+        <!-- Edit Image -->
 
-
-        </div>--}}
         <!--------------------------------------->
         @error('image')
         <livewire:show-alert :message="$message"/>
