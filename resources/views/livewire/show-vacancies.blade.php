@@ -25,10 +25,10 @@
                     </a>
                     <!-- delete -->
 
-                    <a href="#"
-                       class=" bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase text-center">
+                    <button wire:click="$emit('showAlert',{{$vacancy->id}})"
+                            class=" bg-red-600 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase text-center">
                         delete
-                    </a>
+                    </button>
                 </div>
 
             </div>
@@ -44,23 +44,30 @@
 @push('scripts')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        Swal.fire({
-            title: 'Remove Vacancy ?',
-            text: "A deleted Vacancy cannot be recovered",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            }
+        Livewire.on('showAlert', vacancyId => {
+            Swal.fire({
+                title: 'Remove Vacancy ?',
+                text: "A deleted Vacancy cannot be recovered",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //Delete a vacancy from the server
+                    Livewire.emit('deleteVacancy', vacancyId)
+
+                    Swal.fire(
+                        'Vacancy eliminated!!',
+                        'Correctly eliminated.',
+                        'success'
+                    )
+                }
+            })
+
         })
+
     </script>
 
 @endpush
