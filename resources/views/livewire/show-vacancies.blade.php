@@ -35,3 +35,7 @@
         <p class="p-3 text-center text-sm text-gray-600">There are no vacancies that </p>
     @endforelse
 </div>
+<div class="mt-10">
+    {{$vacancies->links()}}
+
+</div>
