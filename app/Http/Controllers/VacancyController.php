@@ -61,6 +61,7 @@ class VacancyController extends Controller
     public function edit(Vacancy $vacancy)
     {
         //
+        $this->authorize('update',$vacancy);
         return view('vacancies.edit',[
             'vacancy' => $vacancy
         ]);
