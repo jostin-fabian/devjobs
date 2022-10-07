@@ -18,7 +18,7 @@
                     Candidates
                 </a>
                 <!-- edit -->
-                <a href="#"
+                <a href="{{route('vacancies.edit',$vacancy->id)}}"
                    class=" bg-blue-800 py-2 px-4 rounded-lg text-white text-sm font-bold uppercase text-center">
                     edit
                 </a>
