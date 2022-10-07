@@ -20,7 +20,11 @@ class EditVacancy extends Component
     public function mount(Vacancy $vacancy)
     {
         $this->title = $vacancy->title;
-        $this->salary = $vacancy->salary;
+        $this->salary = $vacancy->salary_id;
+        $this->category = $vacancy->category_id;
+        $this->company = $vacancy->company;
+        $this->last_day = $vacancy->last_day;
+        $this->description = $vacancy->description;
 
     }
 
