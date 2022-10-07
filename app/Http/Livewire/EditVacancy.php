@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Category;
 use App\Models\Salary;
 use App\Models\Vacancy;
+use Illuminate\Support\Carbon;
 use Livewire\Component;
 
 class EditVacancy extends Component
@@ -23,7 +24,7 @@ class EditVacancy extends Component
         $this->salary = $vacancy->salary_id;
         $this->category = $vacancy->category_id;
         $this->company = $vacancy->company;
-        $this->last_day = $vacancy->last_day;
+        $this->last_day = Carbon::parse($vacancy->last_day)->format('Y-m-d');
         $this->description = $vacancy->description;
 
     }
