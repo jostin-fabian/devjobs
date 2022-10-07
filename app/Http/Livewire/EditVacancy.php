@@ -18,6 +18,15 @@ class EditVacancy extends Component
     public $description;//description of the job
     public $image;//image
 
+    protected $rules = [
+        'title' => 'required|string',
+        'salary' => 'required',
+        'category' => 'required',
+        'company' => 'required',
+        'last_day' => 'required',
+        'description' => 'required',
+    ];
+
     public function mount(Vacancy $vacancy)
     {
         $this->title = $vacancy->title;
@@ -27,6 +36,13 @@ class EditVacancy extends Component
         $this->last_day = Carbon::parse($vacancy->last_day)->format('Y-m-d');
         $this->description = $vacancy->description;
         $this->image = $vacancy->image;
+    }
+
+    public function editVacancy()
+    {
+        $data = $this->validate();
+
+
     }
 
     public function render()
