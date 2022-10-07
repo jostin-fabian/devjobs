@@ -10,11 +10,12 @@ use Livewire\Component;
 
 class EditVacancy extends Component
 {
-    public $title;
+    public $vacancy_id;//id
+    public $title;//title
     public $salary;//salary
     public $category;//category name
     public $company;//company name
-    public $last_day;//last_day
+    public $last_day;//last day
     public $description;//description of the job
     public $image;//image
 
@@ -29,6 +30,7 @@ class EditVacancy extends Component
 
     public function mount(Vacancy $vacancy)
     {
+        $this->vacancy_id = $vacancy->id;
         $this->title = $vacancy->title;
         $this->salary = $vacancy->salary_id;
         $this->category = $vacancy->category_id;
@@ -41,6 +43,22 @@ class EditVacancy extends Component
     public function editVacancy()
     {
         $data = $this->validate();
+        //If there is a new image
+        //search for the vacancy to be edited
+        $vacancy = Vacancy::find($this->vacancy_id);
+        //Assign the values
+        $vacancy->title = $data['title'];
+        $vacancy->salary_id = $data['salary'];
+        $vacancy->category_id = $data['category'];
+        $vacancy->company = $data['company'];
+        $vacancy->last_day = $data['last_day'];
+        $vacancy->description = $data['description'];
+
+        //save the vacancy
+        $vacancy->save();
+        //redirect
+        session()->flash('message', 'Vacancy was updated correctly ');
+        return redirect()->route('vacancies.index');
 
 
     }
