@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vacancy extends Model
 {
     use HasFactory;
+    protected $dates = ['last_day'];
 
     protected $fillable = [
         'title',
