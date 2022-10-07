@@ -45,8 +45,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Remove Vacancy ?',
+            text: "A deleted Vacancy cannot be recovered",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
