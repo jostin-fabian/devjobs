@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vacancy extends Model
 {
     use HasFactory;
+
     protected $dates = ['last_day'];
 
     protected $fillable = [
@@ -21,4 +22,14 @@ class Vacancy extends Model
         'user_id'
 
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function salary()
+    {
+        return $this->belongsTo(Salary::class);
+    }
 }

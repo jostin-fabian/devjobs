@@ -13,13 +13,13 @@
 
             {{--Category--}}
             <p class="font-bold text-sm uppercase text-gray-800 my-3">Category: <span
-                    class="normal-case font-normal">{{$vacancy->category_id}}</span></p>
+                    class="normal-case font-normal">{{$vacancy->category->category}}</span></p>
 
 
             {{--Salary--}}
 
             <p class="font-bold text-sm uppercase text-gray-800 my-3">Salary: <span
-                    class="normal-case font-normal">{{$vacancy->salary_id}}</span></p>
+                    class="normal-case font-normal">{{$vacancy->salary->salary}}</span></p>
 
         </div>
 
