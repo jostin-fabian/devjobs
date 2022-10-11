@@ -24,4 +24,19 @@
         </div>
 
     </div>
+    {{-------------------Displaying Image and job description----------------------------------}}
+    <div class="md:grid md:grid-cols-6 gap-4">
+        {{-- Image --}}
+        <div class="md:col-span-2">
+            <img src="{{asset('storage/vacancies/'.$vacancy->image)}}" alt="{{'Vacancy Image' . $vacancy->title}}"/>
+        </div>
+        {{-- Job Description --}}
+        <div class="md:col-span-4">
+            <h2 class="text-2xl font-bold mb-5">Job Description</h2>
+            <p>{{$vacancy->description}}</p>
+
+        </div>
+    </div>
+
+
 </div>
