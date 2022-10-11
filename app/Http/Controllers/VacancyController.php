@@ -47,10 +47,14 @@ class VacancyController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Vacancy $vacancy)
     {
         //
+        return view('vacancies.show', [
+            'vacancy' => $vacancy
+        ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

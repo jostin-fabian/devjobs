@@ -4,7 +4,7 @@
             <div class="p-6 bg-white border-b border-gray-200 md:flex md:justify-between md:items-center">
                 <!-- data -->
                 <div class="space-y-3">
-                    <a href="#" class="text-xl font-bold">
+                    <a href="{{route('vacancies.show',$vacancy->id)}}" class="text-xl font-bold">
                         {{$vacancy->title}}
                     </a>
                     <p class="text-sm text-gray-600 font-bold ">{{$vacancy->company}}</p>
