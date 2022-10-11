@@ -37,6 +37,14 @@
 
         </div>
     </div>
+    @guest
+        <div class="mt-5 bg-gray-50 border border-dashed p-5 text-center">
+            <p>You want to apply for this vacancy? <a class="font-bold text-indigo-600" href="{{route('register')}}">Obtain
+                    an account and apply to this and other vacancies.</a>
+
+            </p>
+        </div>
+    @endguest
 
 
 </div>
