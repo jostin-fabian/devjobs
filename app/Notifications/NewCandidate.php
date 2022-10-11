@@ -16,9 +16,12 @@ class NewCandidate extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id_vacancy, $name_vacancy, $user_id)
     {
-        //
+        $this->id_vacancy = $id_vacancy;
+        $this->name_vacancy = $name_vacancy;
+        $this->user_id = $user_id;
+
     }
 
     /**
@@ -29,7 +32,7 @@ class NewCandidate extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -40,15 +43,23 @@ class NewCandidate extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/notifications');
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->line('You have received a new candidate for your vacancy.')
+            ->line('The vacancy is: ' . $this->name_vacancy)
+            ->action('View Notifications', $url)
+            ->line('Thank you for using DevJobs!');
     }
 
 //stores the notifications in the database
     public function toDatabase($notifiable)
     {
+        return [
+            'id_vacancy' => $this->id_vacancy,
+            'name_vacancy' => $this->name_vacancy,
+            'user_id' => $this->user_id
+
+        ];
 
     }
 
