@@ -24,5 +24,5 @@ Route::get('/vacancies/create', [VacancyController::class, 'create'])->middlewar
 Route::get('/vacancies/{vacancy}/edit', [VacancyController::class, 'edit'])->middleware(['auth', 'verified'])->name('vacancies.edit');
 Route::get('/vacancies/{vacancy}', [VacancyController::class, 'show'])->name('vacancies.show');
 //notifications
-Route::get('/notifications', NotificationController::class);
+Route::get('/notifications', NotificationController::class)->name('notifications');
 require __DIR__ . '/auth.php';
