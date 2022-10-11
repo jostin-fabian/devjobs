@@ -10,33 +10,36 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-2xl font-bold text-center my-10">My Notifications</h1>
-                    @forelse ($notifications as $notification)
-                        <div class="p-5 border border-gray-200 lg:flex lg:justify-between lg:items-center">
-                            <div>
-                                {{-- Name Vacancy--}}
+                    <div class="divide-y divide-gray-200">
+                        @forelse ($notifications as $notification)
+                            <div class="p-5 lg:flex lg:justify-between lg:items-center">
+                                <div>
+                                    {{-- Name Vacancy--}}
 
-                                <p>Tienes un nuevo candidato en :
-                                    <span class="font-bold">
+                                    <p>Tienes un nuevo candidato en :
+                                        <span class="font-bold">
                                     {{$notification->data['name_vacancy']}}
                                 </span>
-                                </p>
-                                {{-- $Created_at--}}
-                                <p>
+                                    </p>
+                                    {{-- $Created_at--}}
+                                    <p>
                                 <span class="font-bold">
                                     {{$notification->created_at->diffForHumans()}}
                                 </span>
-                                </p>
-                            </div>
-                            <div class="mt-5 lg:mt-0">
-                                <a href="#" class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg">See
-                                    Candidates
-                                </a>
-                            </div>
+                                    </p>
+                                </div>
+                                <div class="mt-5 lg:mt-0">
+                                    <a href="{{route('candidates.index',$notification->data['id_vacancy'])}}"
+                                       class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg">See
+                                        Candidates
+                                    </a>
+                                </div>
 
-                        </div>
-                    @empty
-                        <p class="text-center text-gray-600">No new notifications</p>
-                    @endforelse
+                            </div>
+                        @empty
+                            <p class="text-center text-gray-600">No new notifications</p>
+                        @endforelse
+                    </div>
 
                 </div>
             </div>
