@@ -35,9 +35,11 @@ class ApplyVacancy extends Component
             'cv' => $data['cv'],
         ]);
         //Create the notification and send the email
-        session()->flash('message', 'The vacancy was correctly published');
 
         //Show the user an ok message
+        session()->flash('message', 'Your information was sent successfully, good luck');
+        return redirect()->back();
+
 
     }
 
