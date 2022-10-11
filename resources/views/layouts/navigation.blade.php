@@ -11,15 +11,20 @@
                 </div>
                 {{-----------------Authenticated user----------------------------}}
                 @auth
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('vacancies.index')" :active="request()->routeIs('vacancies.index')">
-                            {{ __('My Vacancies') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('vacancies.create')" :active="request()->routeIs('vacancies.create')">
-                            {{ __('Create Vacancy') }}
-                        </x-nav-link>
-                    </div>
+                    @can('create',App\Models\Vacancy::class)
+                        <!-- Navigation Links -->
+
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('vacancies.index')"
+                                        :active="request()->routeIs('vacancies.index')">
+                                {{ __('My Vacancies') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('vacancies.create')"
+                                        :active="request()->routeIs('vacancies.create')">
+                                {{ __('Create Vacancy') }}
+                            </x-nav-link>
+                        </div>
+                    @endcan
                 @endauth
 
             </div>
@@ -27,12 +32,13 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @auth
-                    @if(auth()->user()->role===2)
+                    @can('create',App\Models\Vacancy::class)
                         <a class="mr-2 w-7 h-7 bg-indigo-600 hover:bg-indigo-800 rounded-full flex flex-col justify-center items-center text-sm font-extrabold text-white"
                            href="{{route('notifications')}}">
                             {{auth()->user()->unreadNotifications->count()}}
                         </a>
-                    @endif
+                    @endcan
+
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
