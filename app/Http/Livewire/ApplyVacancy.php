@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Candidate;
+use App\Models\Vacancy;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -10,27 +11,28 @@ class ApplyVacancy extends Component
 {
     public $cv;//cv
     use WithFileUploads;
+    public $vacancy;//vacancy
+
 
     protected $rules = [
         'cv' => 'required|mimes:pdf'
     ];
 
+    public function mount(Vacancy $vacancy)
+    {
+        $this->vacancy = $vacancy;
+    }
+
     public function applyTo()
     {
-        $this->validate();
+        $data = $this->validate();
         //Store cv in disc
         $cv = $this->cv->store('public/cv');
         $data['cv'] = str_replace('public/cv/', '', $cv);
-        //create vacancy
-
-        Candidate::create([
-            'cv' => $data['title'],
-            'vacancy_id' => $data['category'],
-            'company' => $data['company'],
-            'last_day' => $data['last_day'],
-            'description' => $data['description'],
-            'image' => $data['image'],
+        //Create the candidate for the vacancy
+        $this->vacancy->candidates()->create([
             'user_id' => auth()->user()->id,
+            'cv' => $data['cv'],
         ]);
         //Create the notification and send the email
         session()->flash('message', 'The vacancy was correctly published');
