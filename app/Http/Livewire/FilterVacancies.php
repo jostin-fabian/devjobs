@@ -15,7 +15,7 @@ class FilterVacancies extends Component
     //read form data
     public function readFormData()
     {
-        dd('Searching for');
+        $this->emit('searchTerms', $this->term, $this->category, $this->salary);
 
     }
 
