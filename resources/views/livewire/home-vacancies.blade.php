@@ -10,6 +10,9 @@
                             <a href="{{route('vacancies.show',$vacancy->id)}}"
                                class="text-3xl font-extrabold text-gray-600">{{$vacancy->title}}</a>
                             <p class="text-base text-gray-600 mb-1">{{$vacancy->company}}</p>
+                            <p class="text-xs font-bold text-gray-600 mb-1">{{$vacancy->category->category}}</p>
+                            <p class="text-base text-gray-600 mb-1">{{$vacancy->salary->salary}}</p>
+
                             <p class="font-bold text-xs text-gray-600">Last day to apply:
                                 <span>{{$vacancy->last_day->format('d/m/y')}}</span>
                             </p>
