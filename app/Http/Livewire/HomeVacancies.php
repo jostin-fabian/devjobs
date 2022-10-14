@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Vacancy;
 use Livewire\Component;
 
 class HomeVacancies extends Component
 {
     public function render()
     {
-        return view('livewire.home-vacancies');
+        $vacancies = Vacancy::all();
+        return view('livewire.home-vacancies', [
+            'vacancies' => $vacancies
+        ]);
     }
 }
